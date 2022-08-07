@@ -1,0 +1,36 @@
+<?php
+
+namespace {{ rootNamespace }}Http\Routes;
+
+use Illuminate\Contracts\Routing\Registrar;
+use OllieCodes\Registrars\Contracts\RouteRegistrar;
+use OllieCodes\Registrars\Concerns\MapsRouteRegistrars;
+use {{ rootNamespace }}Http\Routes\Web;
+
+class WebRoutes implements RouteRegistrar
+{
+    use MapsRouteRegistrars;
+
+    /**
+     * @var class-string<\OllieCodes\Registrars\Contracts\RouteRegistrar>[]
+     */
+    protected array $registrars = [
+        Web\DefaultRoutes::class
+    ];
+
+    /**
+     * Map the routes this class represents.
+     *
+     * @param \Illuminate\Contracts\Routing\Registrar $registrar
+     *
+     * @return void
+     */
+    public function map(Registrar $registrar): void
+    {
+        $registrar->group([
+            'middleware' => 'web',
+        ], function (Registrar $registrar) {
+            $this->mapRoutes($registrar, $this->registrars);
+        });
+    }
+}

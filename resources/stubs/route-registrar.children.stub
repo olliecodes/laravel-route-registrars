@@ -1,0 +1,30 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Contracts\Routing\Registrar;
+use OllieCodes\Registrars\Contracts\RouteRegistrar;
+use OllieCodes\Registrars\Concerns\MapsRouteRegistrars;
+
+class {{ class }} implements RouteRegistrar
+{
+    use MapsRouteRegistrars;
+
+    /**
+     * @var class-string<\OllieCodes\Registrars\Contracts\RouteRegistrar>[]
+     */
+    protected array $registrars = [
+    ];
+
+    /**
+     * Map the routes this class represents.
+     *
+     * @param \Illuminate\Contracts\Routing\Registrar $registrar
+     *
+     * @return void
+     */
+    public function map(Registrar $registrar): void
+    {
+
+    }
+}

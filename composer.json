@@ -1,0 +1,40 @@
+{
+  "name": "olliecodes/laravel-route-registrars",
+  "description": "Adds route registrars as an alternative object based approach to registering routes.",
+  "type": "library",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Ollie Read",
+      "email": "code@ollie.codes"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "laravel/framework": "^9.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^7.0",
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "OllieCodes\\Registrars\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OllieCodes\\Registrars\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "OllieCodes\\Registrars\\ToolkitServiceProvider"
+      ],
+      "aliases": [
+      ]
+    }
+  }
+}

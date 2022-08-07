@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ rootNamespace }}Http\Routes\Web;
+
+use Illuminate\Contracts\Routing\Registrar;
+use OllieCodes\Toolkit\Routing\Contracts\RouteRegistrar;
+
+class DefaultRoutes implements RouteRegistrar
+{
+    /**
+     * Map the routes this class represents.
+     *
+     * @param \Illuminate\Contracts\Routing\Registrar $registrar
+     *
+     * @return void
+     */
+    public function map(Registrar $registrar): void
+    {
+        $registrar->get('/', function () {
+            return view('welcome');
+        });
+    }
+}

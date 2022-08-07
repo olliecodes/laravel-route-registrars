@@ -1,0 +1,9 @@
+/.gitattributes          export-ignore
+/.github/                export-ignore
+/.gitignore              export-ignore
+/codecov.yml             export-ignore
+/.changelog              export-ignore
+/.travis.yml             export-ignore
+/phpunit.xml.dist        export-ignore
+/package-banner@2x.png   export-ignore
+/tests/                  export-ignore

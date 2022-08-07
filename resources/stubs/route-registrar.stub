@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Contracts\Routing\Registrar;
+use OllieCodes\Registrars\Contracts\RouteRegistrar;
+
+class {{ class }} implements RouteRegistrar
+{
+    /**
+     * Map the routes this class represents.
+     *
+     * @param \Illuminate\Contracts\Routing\Registrar $registrar
+     *
+     * @return void
+     */
+    public function map(Registrar $registrar): void
+    {
+
+    }
+}

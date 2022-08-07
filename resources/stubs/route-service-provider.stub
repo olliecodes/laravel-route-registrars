@@ -1,0 +1,47 @@
+<?php
+
+namespace {{ rootNamespace }}Providers;
+
+use Illuminate\Contracts\Routing\Registrar;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use OllieCodes\Registrars\Concerns\MapsRouteRegistrars;
+use {{ rootNamespace }}Http\Routes;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    use MapsRouteRegistrars;
+
+    /**
+     * @var class-string<\OllieCodes\Registrars\Contracts\RouteRegistrar>[]
+     */
+    protected array $registrars = [
+        Routes\WebRoutes::class,
+        Routes\ApiRoutes::class
+    ];
+
+    /**
+     * Define your route model bindings, pattern filters, and other route configuration.
+     *
+     * @return void
+     */
+    public function boot(): void
+    {
+        $this->configureRateLimiting();
+
+        $this->routes(function (Registrar $router) {
+            $this->mapRoutes($router, $this->registrars);
+        });
+    }
+
+    /**
+     * Configure the rate limiters for the application.
+     *
+     * @return void
+     */
+    protected function configureRateLimiting()
+    {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+    }
+}

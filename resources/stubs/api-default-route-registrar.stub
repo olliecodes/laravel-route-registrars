@@ -1,0 +1,24 @@
+<?php
+
+namespace {{ rootNamespace }}Http\Routes\Api;
+
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Routing\Registrar;
+use OllieCodes\Toolkit\Routing\Contracts\RouteRegistrar;
+
+class DefaultRoutes implements RouteRegistrar
+{
+    /**
+     * Map the routes this class represents.
+     *
+     * @param \Illuminate\Contracts\Routing\Registrar $registrar
+     *
+     * @return void
+     */
+    public function map(Registrar $registrar): void
+    {
+        $registrar->get('/user', function (Request $request) {
+            return $request->user();
+        })->middleware('auth:sanctum')';
+    }
+}
