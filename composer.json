@@ -1,31 +1,37 @@
 {
-  "name": "olliecodes/laravel-route-registrars",
-  "description": "Adds route registrars as an alternative object based approach to registering routes.",
-  "type": "library",
-  "license": "MIT",
-  "minimum-stability": "stable",
-  "authors": [
-    {
-      "name": "Ollie Read",
-      "email": "code@ollie.codes"
-    }
-  ],
-  "require": {
-    "php": "^8.0",
-    "laravel/framework": "^9.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "OllieCodes\\Registrars\\": "src/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "OllieCodes\\Registrars\\RouteRegistrarServiceProvider"
-      ],
-      "aliases": [
-      ]
-    }
-  }
+    "name": "olliecodes/laravel-route-registrars",
+    "description": "Adds route registrars as an alternative object based approach to registering routes.",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Ollie Read",
+            "email": "code@ollie.codes"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^9.0"
+    },
+    "require-dev": {
+        "marcocesarato/php-conventional-changelog": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "OllieCodes\\Registrars\\": "src/"
+        }
+    },
+    "scripts": {
+        "changelog": "conventional-changelog --config=.changelog"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OllieCodes\\Registrars\\RouteRegistrarServiceProvider"
+            ],
+            "aliases": []
+        }
+    },
+    "version": "1.0.0"
 }
