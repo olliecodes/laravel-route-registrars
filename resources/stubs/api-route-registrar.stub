@@ -7,7 +7,7 @@ use OllieCodes\Registrars\Contracts\RouteRegistrar;
 use OllieCodes\Registrars\Concerns\MapsRouteRegistrars;
 use {{ rootNamespace }}Http\Routes\Api;
 
-class WebRoutes implements RouteRegistrar
+class ApiRoutes implements RouteRegistrar
 {
     use MapsRouteRegistrars;
 
@@ -31,7 +31,7 @@ class WebRoutes implements RouteRegistrar
             'middleware' => 'api',
             'prefix'     => 'api'
         ], function (Registrar $registrar) {
-            $this->mapRoutes($registrar, $this->registrars);
+            $this->mapRouteRegistrars($registrar, $this->registrars);
         });
     }
 }

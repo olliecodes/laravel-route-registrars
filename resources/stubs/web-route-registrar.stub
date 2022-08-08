@@ -30,7 +30,7 @@ class WebRoutes implements RouteRegistrar
         $registrar->group([
             'middleware' => 'web',
         ], function (Registrar $registrar) {
-            $this->mapRoutes($registrar, $this->registrars);
+            $this->mapRouteRegistrars($registrar, $this->registrars);
         });
     }
 }

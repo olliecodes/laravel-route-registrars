@@ -12,7 +12,9 @@ class RouteRegistrarMakeCommand extends GeneratorCommand
     use ConfirmableTrait;
 
     protected $signature = 'make:registrar {name : The name of the route registrar}
-        {--C|hasChildren : Create the route registrar as a parent}';
+        {--C|hasChildren : Create the route registrar as a parent}
+        {--W|web : Create as a web route registrar}
+        {--A|api : Create as an API route registrar}';
 
     protected $description = 'Create a route registrar';
 
@@ -41,6 +43,14 @@ class RouteRegistrarMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $rootNamespace . '\\Http\\Routes';
+        $namespace = $rootNamespace . '\\Http\\Routes';
+
+        if ($this->option('web')) {
+            $namespace .= '\\Web';
+        } else if ($this->option('api')) {
+            $namespace .= '\\Api';
+        }
+
+        return $namespace;
     }
 }

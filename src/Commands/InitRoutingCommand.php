@@ -29,6 +29,7 @@ class InitRoutingCommand extends GeneratorCommand
         }
 
         $this->overwriteRouteServiceProvider();
+        $this->createDirectories();
         $this->addDefaultRoutes();
 
         return self::SUCCESS;
@@ -50,16 +51,33 @@ class InitRoutingCommand extends GeneratorCommand
     {
         $defaultRoutes = [
             'WebRoutes'          => 'web-route-registrar.stub',
-            'Web\\DefaultRoutes' => 'web-default-route-registrar',
+            'Web\\DefaultRoutes' => 'web-default-route-registrar.stub',
             'ApiRoutes'          => 'api-route-registrar.stub',
             'Api\\DefaultRoutes' => 'api-default-route-registrar.stub',
         ];
 
         foreach ($defaultRoutes as $class => $stub) {
-            if ($this->createClass($class, $stub)) {
+            if ($this->createClass('Http\\Routes\\' . $class, $stub)) {
                 $this->info('Route registrar \'' . $class . '\' written');
             } else {
                 $this->error('Unable to write \'' . $class . '\' class');
+            }
+        }
+    }
+
+    private function createDirectories(): void
+    {
+        $directories = [
+            app_path('Http/Routes'),
+            app_path('Http/Routes/Web'),
+            app_path('Http/Routes/Api')
+
+        ];
+
+        foreach ($directories as $directory) {
+            if (! $this->files->isDirectory($directory)) {
+                $this->files->makeDirectory($directory);
+                $this->info('Created directory: ' . $directory);
             }
         }
     }
@@ -74,7 +92,7 @@ class InitRoutingCommand extends GeneratorCommand
     private function createClass(string $class, string $stub): bool
     {
         return $this->files->put(
-                app_path(str_replace('\\', __DIR__, $class) . '.php'),
+                app_path(str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php'),
                 $this->getReplacement(
                     __DIR__ . '/../../resources/stubs/' . $stub,
                     $class
