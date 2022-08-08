@@ -7,8 +7,6 @@ namespace OllieCodes\Registrars;
 use Illuminate\Support\ServiceProvider;
 use OllieCodes\Registrars\Commands\InitRoutingCommand;
 use OllieCodes\Registrars\Commands\RouteRegistrarMakeCommand;
-use OllieCodes\Toolkit\Identity\IdentityToolkitServiceProvider;
-use OllieCodes\Toolkit\Routing\RoutingToolkitServiceProvider;
 
 class RouteRegistrarServiceProvider extends ServiceProvider
 {
