@@ -64,3 +64,42 @@ Create the route registrar in `app/Http/Routes/Web`, an option left in for those
 #### `--A|API`
 
 Exactly the same as the above option, except it creates it in `app/Http/Routes/Api`,
+
+### Registering Registrars
+
+Any class that wants to register registrars can use the following trait.
+
+```
+OllieCodes\Registrars\Concerns\MapsRouteRegistrars
+```
+
+Once doing so, there are three ways to register. All of them require an instance of the following class.
+
+```
+Illuminate\Contracts\Routing\Registrar
+```
+
+This interface is implemented by the Laravel `Router` class, so you can use that.
+
+#### Register multiple
+Call the following method with an instance of the laravel router, and an array of fully qualified class names for the registrars.
+
+```
+mapRouteRegistrars(Registrar $router, array $registrars)
+```
+
+#### Register one
+Call the following method with an instance of the laravel router, and the fully qualified class name of the registrars.
+
+```
+mapRouteRegistrar(Registrar $router, string $registrar)
+```
+
+#### Register from paths
+Call the following method with an instance of the laravel router, and an array of paths where the registrars are held. 
+
+This method will use the order that the files are returned, so please keep route order precedence in mind.
+
+```
+loadRouteRegistrars(Registrar $router, array $paths)
+```
