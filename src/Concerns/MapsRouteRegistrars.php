@@ -63,7 +63,6 @@ trait MapsRouteRegistrars
     protected function mapRouteRegistrar(Registrar $router, string $routeRegistrar): void
     {
         if (! is_subclass_of($routeRegistrar, RouteRegistrar::class)) {
-            dd($routeRegistrar, class_exists($routeRegistrar), is_subclass_of($routeRegistrar, RouteRegistrar::class));
             throw new RuntimeException(sprintf(
                 'Cannot map routes \'%s\', it is not a valid routes class',
                 $routeRegistrar
