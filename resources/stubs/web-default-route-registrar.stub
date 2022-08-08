@@ -3,7 +3,7 @@
 namespace {{ rootNamespace }}Http\Routes\Web;
 
 use Illuminate\Contracts\Routing\Registrar;
-use OllieCodes\Toolkit\Routing\Contracts\RouteRegistrar;
+use OllieCodes\Registrars\Contracts\RouteRegistrar;
 
 class DefaultRoutes implements RouteRegistrar
 {

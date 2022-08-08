@@ -2,10 +2,13 @@
 
 namespace {{ rootNamespace }}Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
 use OllieCodes\Registrars\Concerns\MapsRouteRegistrars;
 use {{ rootNamespace }}Http\Routes;
+use RateLimiter;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -29,7 +32,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function (Registrar $router) {
-            $this->mapRoutes($router, $this->registrars);
+            $this->mapRouteRegistrars($router, $this->registrars);
         });
     }
 

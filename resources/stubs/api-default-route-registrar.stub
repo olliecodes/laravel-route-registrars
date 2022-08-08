@@ -4,7 +4,7 @@ namespace {{ rootNamespace }}Http\Routes\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Routing\Registrar;
-use OllieCodes\Toolkit\Routing\Contracts\RouteRegistrar;
+use OllieCodes\Registrars\Contracts\RouteRegistrar;
 
 class DefaultRoutes implements RouteRegistrar
 {
@@ -19,6 +19,6 @@ class DefaultRoutes implements RouteRegistrar
     {
         $registrar->get('/user', function (Request $request) {
             return $request->user();
-        })->middleware('auth:sanctum')';
+        })->middleware('auth:sanctum');
     }
 }
