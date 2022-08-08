@@ -14,24 +14,15 @@
     "php": "^8.0",
     "laravel/framework": "^9.0"
   },
-  "require-dev": {
-    "orchestra/testbench": "^7.0",
-    "phpunit/phpunit": "^9.5"
-  },
   "autoload": {
     "psr-4": {
       "OllieCodes\\Registrars\\": "src/"
     }
   },
-  "autoload-dev": {
-    "psr-4": {
-      "OllieCodes\\Registrars\\Tests\\": "tests/"
-    }
-  },
   "extra": {
     "laravel": {
       "providers": [
-        "OllieCodes\\Registrars\\ToolkitServiceProvider"
+        "OllieCodes\\Registrars\\RouteRegistrarServiceProvider"
       ],
       "aliases": [
       ]
